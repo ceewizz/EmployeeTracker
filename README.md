@@ -2,6 +2,7 @@
 Module 12 Creating an Employee Tracking database
 
 ## Description
+Command line application to manage the employee tracking database using Node.js, Inquirer, and MySQL.
 
 User Story
 AS A business owner
