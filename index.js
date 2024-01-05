@@ -1,7 +1,7 @@
 // Variable and Dependencies
 const inquirer = require("inquirer");
 const dTable = require('console.table');
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 
 // Initialize Server after connection db
