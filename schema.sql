@@ -6,23 +6,23 @@ USE DB_employees;
 
 CREATE TABLE department (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(35) NULL,
+    name VARCHAR(30) NULL,
     PRIMARY KEY (id)
 
 );
 
 CREATE TABLE role (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(35) NULL,
-    salary DECIMAL(10.3) NULL,
+    title VARCHAR(30) NULL,
+    salary DECIMAL(10.1) NULL,
     department_id INT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE employee (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(35),
-    last_name VARCHAR(35),
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
     manager_id INT NULL,
     role_id INT NULL,
     PRIMARY KEY (id)
