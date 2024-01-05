@@ -1,16 +1,16 @@
 // Variable and Dependencies
-const inquirer = require('inquirer');
-const db = require('db');
-const mysql = require('mysql');
+const inquirer = require("inquirer");
+const dTable = require('console.table');
+const mysql = require("mysql");
 
 
 // Initialize Server after connection db
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: 3001,
+    port: 3306,
     user: 'root',
     password: 'password',
-    database: 'DBemployees'
+    database: "DB_employees"
 });
 
 
@@ -18,18 +18,32 @@ const connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log('connected as id' + connection.threadId());
-    startPrompt();
+ afterConnection();
 
 
 });
+
+afterConnection = () => {
+    console.log("<<<<<<<<<<<<<<<<<<<<o.O>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    console.log("<<<                                        >>>>>>")
+    console.log("<<<                                        >>>>>>")
+    console.log("<<<      EMPLOYEE MANAGING SOLUTION        >>>>>>")
+    console.log("<<<                                        >>>>>>")
+    console.log("<<<                                        >>>>>>")
+    console.log("<<<<<<<<<<<<<<<<<<<<o.O>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    startPrompt();
+
+
+
+};
 
 // Starting the prompt
 function startPrompt() {
     inquirer.prompt([
         {
-            type: 'list',
-            message: 'Start by selecting a choice',
-            name: 'choice',
+            type: "list",
+            message: "Start by selecting a choice",
+            name: "choice",
             choices: [
                 "View All Employees",
                 "Employee's Roles",
@@ -52,7 +66,7 @@ function startPrompt() {
                 break;
 
                 case "View All Departments":
-                    viewAllDepartmets();
+                    viewAllDepartments();
                 break;
 
                 case "Update Employee":
@@ -77,19 +91,17 @@ function startPrompt() {
 // Viewing all of the employees
 function viewAllEmployees() {
     console.log("Viewing all of the employees\n");
-    var query = `SELECT e.id, e.first_name, e.last_name, r.title, r.salary, department.name, CONCAT(manager.first_name, ' ' , manager.last_name) As Manager FROM employee e
-    LEFT JOIN role r ON e.role_id = r.id
-    INNER JOIN department on department.id = r.department_id LEFT JOIN employee m ON m.id = e.manager_id`
+     connection.query = ("SELECT e.id, e.first_name, e.last_name, r.title, r.salary, department.name, CONCAT(manager.first_name, ' ' , manager.last_name) As Manager FROM employee e LEFT JOIN role r ON e.role_id = r.id INNER JOIN department on department.id = r.department_id LEFT JOIN employee m ON m.id = e.manager_id;",
 
-    connection.query(query, function (err, res)
+  function(err, res) 
     {
-        if (err) throw err;
+        if (err) throw err
 
-        console.table(res);
+        console.table(res)
         console.log("All Employees Displayed\n");
 
-        startPrompt();
-    });
+        startPrompt()
+    })
 }
 
 // Viewing all employees roles
