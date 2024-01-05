@@ -70,7 +70,6 @@ Chris Huynh
 ## Links
 
 Github Repo: https://github.com/ceewizz/EmployeeTracker
-Video Link: 
+Video Link: https://drive.google.com/file/d/1VmDKikG24pLsTlFsHDzgWsI9j79F_DPL/view
 
-
-
+![Alt text](demovid.gif)
